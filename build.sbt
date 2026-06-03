@@ -10,7 +10,7 @@ scalaVersion := "2.13.18"
 libraryDependencies ++= Seq(
   guice,
   ws, // Adds Play WSClient
-  "io.getquill" %% "quill-jdbc-zio" % "4.8.0", // Or quill-zio / quill-jdbc-io depending on your DB
+  "io.getquill" %% "quill-jdbc" % "4.8.4", // Or quill-zio / quill-jdbc-io depending on your DB
   "mysql" % "mysql-connector-java" % "8.0.33", // Added native MySQL Driver
   "com.typesafe.play" %% "play-json" % "2.10.0"
 )

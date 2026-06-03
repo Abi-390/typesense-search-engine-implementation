@@ -1,0 +1,7 @@
+# Search perks endpoint
+GET     /v1/search                  controllers.SearchController.search(q: String, dealType: Option[String])
+
+# Sync a specific perk from MySQL to Typesense
+POST    /v1/sync/:id                controllers.SearchController.sync(id: Long)
+
+POST    /v1/init-collection          controllers.SearchController.initCollection
