@@ -4,7 +4,6 @@ package services
 import javax.inject._
 import repositories.PerkRepository
 import models.{PerkDocument, PerkEntity, TypesenseResponse}
-import org.apache.pekko.protobufv3.internal.Struct
 import play.api.libs.ws._
 
 import scala.concurrent.{ExecutionContext, Future}
