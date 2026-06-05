@@ -13,20 +13,20 @@ class SearchController @Inject()(
                                   typesenseClient: TypesenseClient
                                 )(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
-        // GET /v1/search?q=banana&dealType=onlinedeal
-  def search(q:String, dealType:Option[String]) = Action.async{ implicit request =>
-    perkService.searchPerks(q,dealType).map{tsResponse =>
+  // GET /v1/search?q=banana&dealType=onlinedeal
+  def search(q: String, dealType: Option[String]) = Action.async { implicit request =>
+    perkService.searchPerks(q, dealType).map { tsResponse =>
       Ok(Json.toJson(tsResponse))
-    }.recover{
-      case ex: Exception => InternalServerError(Json.obj("error"->ex.getMessage))
+    }.recover {
+      case ex: Exception => InternalServerError(Json.obj("error" -> ex.getMessage))
     }
   }
 
   // POST /v1/sync/:id
-  def sync(id:Long) = Action.async  { implicit  request=>
-    perkService.syncPerkToSearchIndex(id).map{
-      case true => Ok(Json.obj("status"->"Synced successfully"))
-      case false => NotFound(Json.obj("Status"->"Perk not found in DB"))
+  def sync(id: Long) = Action.async { implicit request =>
+    perkService.syncPerkToSearchIndex(id).map {
+      case true => Ok(Json.obj("status" -> "Synced successfully"))
+      case false => NotFound(Json.obj("Status" -> "Perk not found in DB"))
     }
   }
 
@@ -40,7 +40,6 @@ class SearchController @Inject()(
       }
     }
   }
-
 
 
 }
